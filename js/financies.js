@@ -1,56 +1,52 @@
 var financies = angular.module('financies', []);
 
 financies.directive('tabs', function() {
-   return function (scope, element, attrs) {
-      var ddo = {
-         restrict: 'E',
-         transclude: true,
-         scope: {},
-         controller: function($scope, $element) {
-            $scope.panes = [];
+   return {
+      restrict: 'E',
+      transclude: true,
+      scope: {},
+      controller: function($scope, $element) {
+         var panes = $scope.panes = [];
 
-            $scope.addPane = function(pane) {
-               panes.push(pane);
+         this.addPane = function(pane) {
+            panes.push(pane);
 
-               if($scope.panes.length === 0)
-                  $scope.select(pane);
-            };
+            if(panes.length === 1)
+               $scope.select(pane);
+         };
 
-            $scope.select = function(pane) {
-               angular.forEach(panes, function(pane) {
-                  pane.selected = false;
-               });
-               pane.selected = true;
-            };
-         },
-         template: 
-            '<div class="tabs">' + 
-               '<ul>' + 
-                  '<li ng_repeat="pane in panes">' + 
-                     '<a href="" ng_click="select(pane)">{{pane.title}}</a>' + 
-                  '</li>' + 
-               '</ul>' + 
-            '</div>',
-         replace: true
-      };
-      return ddo;
+         $scope.select = function(pane) {
+            angular.forEach(panes, function(pane) {
+               pane.selected = false;
+            });
+            pane.selected = true;
+         };
+      },
+      template: 
+         '<div class="tabs">' + 
+            '<ul>' + 
+               '<li ng_repeat="pane in panes" class="tab" ng_class="{selected: pane.selected}">' + 
+                  '<a href="" ng_click="select(pane)">{{pane.title}}</a>' + 
+               '</li>' + 
+            '</ul>' + 
+            '<div class="content" ng_transclude></div>' + 
+         '</div>',
+      replace: true
    };
 });
 
 financies.directive('pane', function() {
-   return function(scope, element, attrs) {
-      var ddo = {
-         require: '^tabs',
-         restrict: 'E',
-         transclude: true,
-         scope: {
-            title: 'none'
-         },
-         link: function(scope, element, attrs, tabsCtrl) {
-            tabsCtrl.addPane(scope);
-         },
-         template: '<div class="pane" ng_class="{active: selected}" ng-transclude></div>',
-         replace: true
-      };
+   return {
+      require: '^tabs',
+      restrict: 'E',
+      transclude: true,
+      scope: {
+         title: '@'
+      },
+      link: function(scope, element, attrs, tabsController) {
+         tabsController.addPane(scope);
+      },
+      template: '<div class="pane" ng_class="{active: selected}" ng_transclude></div>',
+      replace: true
    };
 });
