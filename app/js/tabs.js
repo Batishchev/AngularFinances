@@ -1,14 +1,16 @@
-var financies = angular.module('financies', []);
+var module = angular.module('tabs', []);
 
-financies.directive('tabs', function() {
+module.directive('tabs', function() {
    return {
       restrict: 'E',
       transclude: true,
       scope: {},
-      controller: function($scope, $element) {
+      controller: function($scope, $element, $attrs, $transclude) {
          var panes = $scope.panes = [];
 
          this.addPane = function(pane) {
+            if(!pane.title)
+               pane.setTitle('unknown');
             panes.push(pane);
 
             if(panes.length === 1)
@@ -35,13 +37,18 @@ financies.directive('tabs', function() {
    };
 });
 
-financies.directive('pane', function() {
+module.directive('pane', function() {
    return {
       require: '^tabs',
       restrict: 'E',
       transclude: true,
       scope: {
          title: '@'
+      },
+      controller: function($scope, $element, $attrs, $transclude) {
+         $scope.setTitle = function(title) {
+            $attrs.title = title;
+         };
       },
       link: function(scope, element, attrs, tabsController) {
          tabsController.addPane(scope);

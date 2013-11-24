@@ -1,0 +1,39 @@
+.tabs {
+
+   .content {
+      float: right;
+      width: 80%;
+   }
+
+   ul {
+      list-style-type: none;
+      padding: 0;
+      float: left;
+      width: 20%;
+      margin: 0;
+      font-weight: bold;
+
+      li {
+         color: black;
+
+         &.selected {
+            background-color: #0078e7;
+            color: white;
+         }
+
+         a {
+            padding: 0.7em 1em;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+         }
+      }
+   }
+}
+
+.pane {
+   display: none;
+   &.active {
+      display: initial;
+   }
+}
