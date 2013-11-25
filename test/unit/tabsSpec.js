@@ -23,8 +23,14 @@ describe('tabs', function() {
       expect(element.children().eq(0).children().length).toBe(10);
    });
 
+   it('checks whether tab name equals "Test"', function() {
+      var element = compile('<tabs><pane title="Test"></pane></tabs>')(rootScope);
+      rootScope.$digest();
+      expect(element.children().eq(0).children().eq(0).children().eq(0).text()).toBe('Test');
+   });
+
    it('checks whether tab name equals "unknown" if no attributes found', function() {
-      var element = compile('<tabs><pane>test</pane></tabs>')(rootScope);
+      var element = compile('<tabs><pane></pane></tabs>')(rootScope);
       rootScope.$digest();
       expect(element.children().eq(0).children().eq(0).children().eq(0).text()).toBe('unknown');
    });
