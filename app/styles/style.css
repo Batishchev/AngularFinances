@@ -1,31 +1,137 @@
-.tabs .content {
-  float: right;
-  width: 80%;
-}
-.tabs ul {
-  list-style-type: none;
-  padding: 0;
+.content {
   float: left;
+  width: 78%;
+  margin: 0 0 0 1%;
+}
+.inner_content {
+  float: left;
+  width: 79%;
+  margin: 0 1% 0 0;
+}
+.actions {
+  float: right;
   width: 20%;
-  margin: 0;
-  font-weight: bold;
 }
-.tabs ul li {
+.actions div {
   color: black;
+  border: 1px solid #0078e7;
+  padding: 0.7em 0em;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  font-size: 16px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+  margin-bottom: -1px;
 }
-.tabs ul li.selected {
+.actions div.icon {
+  padding: 2px 5px;
+  display: inline;
+  width: 1%;
+}
+.actions div.active {
   background-color: #0078e7;
   color: white;
 }
-.tabs ul li a {
+input {
+  padding: 8px;
+  margin: 0;
+  outline: 0;
+  border: 1px solid #A8CEFF;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+  font-size: 16px;
+}
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal.active {
+  visibility: visible;
+}
+.button,
+input[type="button"] {
+  color: black;
+  border: 1px solid #0078e7;
+  padding: 0.7em 0em;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  font-size: 16px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+  margin-bottom: -1px;
+}
+.button.icon,
+input[type="button"].icon {
+  padding: 2px 5px;
+  display: inline;
+  width: 1%;
+}
+.button.active,
+input[type="button"].active {
+  background-color: #0078e7;
+  color: white;
+}
+.menu {
+  padding: 0;
+  margin: 0;
+  float: left;
+  width: 20%;
+  font-weight: bold;
+}
+.menu a {
+  color: black;
   padding: 0.7em 1em;
   display: block;
   text-decoration: none;
-  color: inherit;
 }
-.pane {
-  display: none;
+.menu a.active {
+  background-color: #0078e7;
+  color: white;
 }
-.pane.active {
-  display: initial;
+.accounts {
+  border-collapse: collapse;
+  border: 1px solid gray;
+}
+.accounts td {
+  padding: 8px;
+  border-top: 1px solid gray;
+}
+.accounts th {
+  text-align: left;
+  padding: 8px;
+  background-color: #A8CEFF;
+}
+.accounts .activity {
+  width: 1%;
+  text-align: center;
+}
+.accounts .last_transaction {
+  width: 1%;
+  text-align: center;
+}
+.accounts .opened {
+  width: 1%;
+  text-align: center;
 }

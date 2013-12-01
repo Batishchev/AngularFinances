@@ -1,0 +1,25 @@
+<div ng_controller="accountsController">
+   <table class='accounts inner_content' cellpadding=0 cellspacing=0>
+      <thead>
+         <tr>
+            <th class="name">Название</th>
+            <th class="balans">Баланс</th>
+            <th class="opened">Открыт</th>
+            <th class="last_transaction">ПТ</th>
+            <th class="activity">Действия</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr ng_repeat="account in accounts">
+            <td class="name">{{account.name}}</td>
+            <td class="balans">{{account.value + " "}}{{account.currency}}</td>
+            <td class="opened">{{account.opened | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+            <td class="last_transaction">{{account.lastTransaction | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+            <td class="activity"><div class="button icon" ng_click="remove(account)">X</div></td>
+         </tr>
+      </tbody>
+   </table>
+   <div class="actions">
+      <div ng_click="add()">Добавить</div>
+   </div>
+</div>

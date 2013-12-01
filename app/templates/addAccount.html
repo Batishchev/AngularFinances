@@ -1,0 +1,32 @@
+<div ng_controller="addAccountController">
+   <table class="inner_content">
+      <tr>
+         <td style="width: 1%;">
+            Название
+         </td>
+         <td>
+             <input ng_model="name" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            Валюта
+         </td>
+         <td>
+            <input ng_model="currency" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            Значение
+         </td>
+         <td>
+            <input ng_model="value" />
+         </td>
+      </tr>
+   </table>
+   <div class="actions">
+      <input type="button" ng_click="add()" value="Добавить"/>
+      <input type="button" ng_click="back()" value="Назад"/>
+   </div>
+</div>

@@ -4,24 +4,23 @@
    <meta charset="UTF-8">
    <title>Financies Angular</title>
    <link rel="stylesheet" href="styles/style.css">
+   <script type="text/javascript" src="lib/moment/moment.min.js"></script>
    <script type="text/javascript" src="lib/angular/angular.js"></script>
+   <script type="text/javascript" src="lib/angular/angular-route.js"></script>
    <script type="text/javascript" src="js/financies.js"></script>
-   <script type="text/javascript" src="js/tabs.js"></script>
+   <script type="text/javascript" src="js/menu.js"></script>
+   <script type="text/javascript" src="js/accountsController.js"></script>
+   <script type="text/javascript" src="js/addAccountController.js"></script>
 </head>
-<body>
-   <tabs>
-      <pane title="Счета">
-         Счета находятся на стадии разработки
-      </pane>
-      <pane title="Записи">
-         Записи находятся на стадии разработки
-      </pane>
-      <pane title="Категории">
-         Категории находятся на стадии разработки
-      </pane>
-      <pane title="Графики">
-         Графики находятся на стадии разработки
-      </pane>
-   </tabs>
+<body ng_controller="MainController">
+   <menu>
+      <item href="index.html">Главная</item>
+      <item href="accounts">Счета</item>
+      <item href="transactions">Транзакции</item>
+      <item href="groups">Группы</item>
+      <item href="charts">Графики</item>
+   </menu>
+   <div class="content" ng_view>
+   </div>
 </body>
 </html>
